@@ -72,7 +72,7 @@ class Historico
     public function getDispositivos($id) // junta la tabla de dispositivos y tecnicos para obtener su usuario
     {
         try {
-            $sql = "SELECT Historicos.fecha,tecnicos.usuario,Historicos.descripcion, Historicos.id FROM Historicos JOIN tecnicos on Historicos.fk_tecnico = tecnicos.id where fk_dispositivo = $id ORDER BY Historicos.fecha DESC";
+            $sql = "SELECT Historicos.fecha,Tecnicos.usuario,Historicos.descripcion, Historicos.id FROM Historicos JOIN Tecnicos on Historicos.fk_tecnico = Tecnicos.id where fk_dispositivo = $id ORDER BY Historicos.fecha DESC";
             $stm = $this->conn->prepare($sql);
             $stm->execute();
             $tuples = $stm->fetchAll();
